@@ -1,0 +1,92 @@
+Planejando do zero um Saas Multi-tenancy para pequenas empresas.
+
+
+/////////////////// CONCEITOS BASICOS ////////////////////////
+Software as a service = Software como um servico
+Multi-tenancy = Varios inquilinos: Traducao a grosso modo
+
+
+Tipos de tenancy
+
+Single-Tenant = Um unico usuario usando o sistema
+
+Multi-Tenant = Varios usuarios usam o mesmo sistema e se molda de acordo com cada usuario
+- Opcoes para identificar o usuario que esta acessando
+--- Dominio
+--- Sub-Dominio
+--- Login
+
+Vantagens e Desvantagens do Single/Multi-Tenant
+
+Single-Tenant
+- Vantagens:
+--- Personalizar ABERTAMENTE o sistema.
+
+- Desvantagens:
+--- Alto custo de manutencao do sistema original
+
+Multi-Tenant
+- Vantagens:
+--- Baixo custo de manutencao do sistema
+
+Desvantagens:
+--- Acoplamento de recursos
+
+
+
+//////// PLANEJAMENTO DO SISTEMA: PESSOAS E FUNCIONALIDADES /////////////
+
+Sistema de Delivery
+
+PESSOAS QUE VAO UTILIZAR O SISTEMA
+
+- usuario final: Vai fazer os pedidos.
+- o estabelecimento: cadastrar produtos, verificar produtos e mais.
+- Admin do sistema: Cadastrar os restaurantes, deletar, verificar status de cada restaurantes
+
+FUNCIONALIDADES
+- Usuario Final
+--- Carrinho de compras (com checkout);
+--- Listagem de produtos;
+--- Login/Cadastro;
+--- Visualizacao de pedidos;
+
+- Estabelecimento
+--- Gestao de pedidos;
+--- Gestao de produtos;
+
+- Adimin
+--- Gestao de estabelecimentos
+
+////////////////////// PLANEJAMENTO DO SISTEMA: TELAS ////////////////
+
+TELAS: Para ususario final
+- Home (Listagem de promocoes e produtos);
+- Pagina de produto especifico;
+- Carrinho de compras;
+- Checkout (para logado);
+- Cadastro de enderecos;
+- Login/Cadastro;
+- Lista de pedidos;
+- Pedido individual.
+
+TELAS: Para estabelecimento
+- Login/cadastro;
+- Listagem de pedidos;
+- Edicao de pedidos;
+- Listagem de produtos;
+- Edicao de produtos.
+
+TELAS: Para Admin
+- Listagem de estabelecimentos;
+- Edicao de estabelecimentos;
+
+////////////// DEFININDO TECNOLOGIAS ////////////////
+
+- NextJS (com SSR) e Prisma (ORM);
+- MySQL / PostgreSQL;
+- API RESTFUL;
+- Typescript;
+
+
+
