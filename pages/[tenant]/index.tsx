@@ -1,7 +1,10 @@
+import styles from '../../styles/Home.module.css';
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>
+      <h1>Seja bem vindo</h1>
+    </div>
   );
 }
 
