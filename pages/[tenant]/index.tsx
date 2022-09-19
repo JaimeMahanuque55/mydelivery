@@ -10,7 +10,11 @@ const Home = () => {
             <div className={styles.headerSubtitle}>O que deseja para hoje?</div>
           </div>
           <div className={styles.headerTopRight}>
-
+            <div className={styles.menuButton}>
+              <div className={styles.menuButtonLine}></div>
+              <div className={styles.menuButtonLine}></div>
+              <div className={styles.menuButtonLine}></div>
+            </div>
           </div>
         </div>
         <div className={styles.headerBottom}>
