@@ -1,3 +1,4 @@
+import { SearchInput } from '../../components/SearchInput';
 import styles from '../../styles/Home.module.css';
 
 const Home = () => {
@@ -18,7 +19,9 @@ const Home = () => {
           </div>
         </div>
         <div className={styles.headerBottom}>
-          Busca
+          <SearchInput
+
+          />
         </div>
       </header>
     </div>
