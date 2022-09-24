@@ -5,6 +5,7 @@ import styles from '../../styles/Home.module.css';
 
 const Home = () => {
 
+
   const handleSearch = (searchValue: string) => {
     console.log(`Voce esta buscando por: ${searchValue}`)
   }
