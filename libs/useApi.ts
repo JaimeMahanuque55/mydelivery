@@ -4,7 +4,7 @@ export type getTenantResponse = {
   secondColor: string;
 }
 
-export const UseApi = () => ({
+export const useApi = () => ({
 
   getTenant: (tenantSlug: string): boolean | getTenantResponse => {
     switch (tenantSlug) {
