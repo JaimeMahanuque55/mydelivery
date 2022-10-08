@@ -11,8 +11,8 @@ export const useApi = () => ({
       case 'graveburger':
         return {
           name: 'GraveBurger',
-          mainColor: '#0f0',
-          secondColor: '#ccc'
+          mainColor: '#f00',
+          secondColor: '#0f0'
         }
 
         break;
