@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { Header } from '../../components/Header';
 import { useAppContext } from '../../contexts/AppContext';
 import { useApi } from '../../libs/useApi';
-import styles from '../../styles/Home.module.css';
+import styles from '../../styles/login.module.css';
 import { Tenant } from '../../types/Tenant';
 
 const Login = (data: Props) => {
@@ -20,7 +20,10 @@ const Login = (data: Props) => {
         <title>Login | {data.tenant.name}</title>
       </Head>
 
-      <Header />
+      <Header
+        color={data.tenant.mainColor}
+        backHref={`/${data.tenant.slug}`}
+      />
     </div>
   );
 }
