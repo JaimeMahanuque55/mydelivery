@@ -1,5 +1,7 @@
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Button } from '../../components/Button';
 import { Header } from '../../components/Header';
@@ -16,6 +18,8 @@ const Login = (data: Props) => {
     setTenant(data.tenant);
   }, []);
 
+  const router = useRouter();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -23,7 +27,7 @@ const Login = (data: Props) => {
 
   }
   const handleSignup = () => {
-
+    router.push(`/${data.tenant.slug}/signup`);
   }
 
   return (
@@ -38,7 +42,13 @@ const Login = (data: Props) => {
       />
 
       <div className={styles.header}>{data.tenant.name}</div>
-      <div className={styles.subtitle}>Use suas credenciais para realizar o login.</div>
+      <div
+        className={styles.subtitle}
+        style={{ borderBottomColor: data.tenant.mainColor }}
+      >
+        Use suas credenciais para realizar o login.
+      </div>
+      <div className={styles.line}></div>
 
       <div className={styles.formArea}>
         <div className={styles.inputArea}>
@@ -67,9 +77,14 @@ const Login = (data: Props) => {
           />
         </div>
       </div>
-      <div className={styles.forgetArea}>
-        Esqueceu sua senha? Clique aqui
+      <div
+        className={styles.forgetArea}
+        style={{ borderBottomColor: data.tenant.mainColor }}
+      >
+        Esqueceu sua senha? <Link href={`/${data.tenant.slug}/forget`}><a style={{ color: data.tenant.mainColor }}>Clique aqui</a></Link>
       </div>
+
+      <div className={styles.line}></div>
 
       <div className={styles.signupArea}>
         <Button
