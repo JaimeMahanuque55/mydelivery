@@ -16,6 +16,7 @@ const Login = (data: Props) => {
   }, []);
 
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   return (
     <div className={styles.container}>
@@ -32,6 +33,13 @@ const Login = (data: Props) => {
         placeholder='Digite seu e-mail'
         value={email}
         onChange={setEmail}
+      />
+      <InpuField
+        color={data.tenant.mainColor}
+        placeholder='Digite sua senha'
+        value={password}
+        onChange={setPassword}
+        password
       />
     </div>
   );

@@ -5,6 +5,20 @@
   border: 2px solid #f9f9fb;
   border-radius: 4px;
   padding: 0 16px;
+  display: flex;
 }
 
-.input {}
+.input {
+  flex: 1;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #1b1b1b;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.showPassword {
+  display: flex;
+  align-items: center;
+}
