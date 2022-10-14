@@ -22,6 +22,9 @@ const Login = (data: Props) => {
   const handleSubmit = () => {
 
   }
+  const handleSignup = () => {
+
+  }
 
   return (
     <div className={styles.container}>
@@ -33,32 +36,49 @@ const Login = (data: Props) => {
         color={data.tenant.mainColor}
         backHref={`/${data.tenant.slug}`}
       />
-      <InpuField
-        color={data.tenant.mainColor}
-        placeholder='Digite seu e-mail'
-        value={email}
-        onChange={setEmail}
-      />
-      <InpuField
-        color={data.tenant.mainColor}
-        placeholder='Digite sua senha'
-        value={password}
-        onChange={setPassword}
-        password
-      />
 
-      <Button
-        color={data.tenant.mainColor}
-        label="Entrar"
-        onClick={handleSubmit}
-        fill={true}
-      />
-      <Button
-        color={data.tenant.mainColor}
-        label="Entrar"
-        onClick={handleSubmit}
-        fill={false}
-      />
+      <div className={styles.header}>{data.tenant.name}</div>
+      <div className={styles.subtitle}>Use suas credenciais para realizar o login.</div>
+
+      <div className={styles.formArea}>
+        <div className={styles.inputArea}>
+          <InpuField
+            color={data.tenant.mainColor}
+            placeholder='Digite seu e-mail'
+            value={email}
+            onChange={setEmail}
+          />
+        </div>
+        <div className={styles.inputArea}>
+          <InpuField
+            color={data.tenant.mainColor}
+            placeholder='Digite sua senha'
+            value={password}
+            onChange={setPassword}
+            password
+          />
+        </div>
+        <div className={styles.inputArea}>
+          <Button
+            color={data.tenant.mainColor}
+            label="Entrar"
+            onClick={handleSubmit}
+            fill={true}
+          />
+        </div>
+      </div>
+      <div className={styles.forgetArea}>
+        Esqueceu sua senha? Clique aqui
+      </div>
+
+      <div className={styles.signupArea}>
+        <Button
+          color={data.tenant.mainColor}
+          label="Quero me Cadastrar"
+          onClick={handleSignup}
+        />
+      </div>
+
     </div>
   );
 }
