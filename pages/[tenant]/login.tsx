@@ -1,6 +1,7 @@
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { useEffect } from 'react';
+import { Header } from '../../components/Header';
 import { useAppContext } from '../../contexts/AppContext';
 import { useApi } from '../../libs/useApi';
 import styles from '../../styles/Home.module.css';
@@ -18,6 +19,8 @@ const Login = (data: Props) => {
       <Head>
         <title>Login | {data.tenant.name}</title>
       </Head>
+
+      <Header />
     </div>
   );
 }
