@@ -36,7 +36,6 @@ const Home = (data: Props) => {
         </div>
         <div className={styles.headerBottom}>
           <SearchInput
-            mainColor={data.tenant.mainColor}
             onSearch={handleSearch}
           />
         </div>
@@ -47,28 +46,18 @@ const Home = (data: Props) => {
       <div className={styles.grid}>
         <ProductItem
           data={{ id: 1, image: '/temp/burger.png', categoryName: 'Tradicional', name: 'Texas Burger', price: '120 MZN' }}
-          mainColor={data.tenant.mainColor}
-          secondColor={data.tenant.secondColor}
         />
         <ProductItem
           data={{ id: 2, image: '/temp/burger.png', categoryName: 'Tradicional', name: 'Manuel Burger', price: '150 MZN' }}
-          mainColor={data.tenant.mainColor}
-          secondColor={data.tenant.secondColor}
         />
         <ProductItem
           data={{ id: 3, image: '/temp/burger.png', categoryName: 'Tradicional', name: 'Texas Burger', price: '120 MZN' }}
-          mainColor={data.tenant.mainColor}
-          secondColor={data.tenant.secondColor}
         />
         <ProductItem
           data={{ id: 4, image: '/temp/burger.png', categoryName: 'Tradicional', name: 'Texas Burger', price: '120 MZN' }}
-          mainColor={data.tenant.mainColor}
-          secondColor={data.tenant.secondColor}
         />
         <ProductItem
           data={{ id: 5, image: '/temp/burger.png', categoryName: 'Tradicional', name: 'Texas Burger', price: '120 MZN' }}
-          mainColor={data.tenant.mainColor}
-          secondColor={data.tenant.secondColor}
         />
       </div>
     </div>
