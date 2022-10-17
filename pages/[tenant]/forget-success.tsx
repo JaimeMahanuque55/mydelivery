@@ -5,13 +5,14 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Button } from '../../components/Button';
 import { Header } from '../../components/Header';
+import { Icon } from '../../components/Icon';
 import { InpuField } from '../../components/InputField';
 import { useAppContext } from '../../contexts/AppContext';
 import { useApi } from '../../libs/useApi';
-import styles from '../../styles/forget.module.css';
+import styles from '../../styles/forgetSuccess.module.css';
 import { Tenant } from '../../types/Tenant';
 
-const Forget = (data: Props) => {
+const ForgetSuccess = (data: Props) => {
   const { tenant, setTenant } = useAppContext();
 
   useEffect(() => {
@@ -20,10 +21,8 @@ const Forget = (data: Props) => {
 
   const router = useRouter();
 
-  const [email, setEmail] = useState('');
-
   const handleSubmit = () => {
-    router.push(`/${data.tenant.slug}/forget-success`);
+    router.push(`${data.tenant.slug}/login`);
   }
 
   return (
@@ -34,34 +33,26 @@ const Forget = (data: Props) => {
 
       <Header
         color={data.tenant.mainColor}
-        backHref={`/${data.tenant.slug}/login`}
+        backHref={`/${data.tenant.slug}/forget`}
       />
 
-      <div className={styles.header}>{data.tenant.name}</div>
-      <div className={styles.title}>Esqueceu sua senha?</div>
+      <div className={styles.iconArea}>
+        <Icon icon='mailSent' color={data.tenant.mainColor} width={99} height={81} />
+      </div>
+      <div className={styles.title}>Verifique seu e-mail</div>
       <div
         className={styles.subtitle}
-        style={{ borderBottomColor: data.tenant.mainColor }}
       >
-        Preencha o campo com seu e-mail e receba as instruções necessárias para redefinir a sua senha.
+        Enviamos as instruções para recuperação de senha para o seu e-mail.
       </div>
-      <div className={styles.line}></div>
 
       <div className={styles.formArea}>
         <div className={styles.inputArea}>
-          <InpuField
-            color={data.tenant.mainColor}
-            placeholder='Digite seu e-mail'
-            value={email}
-            onChange={setEmail}
-          />
-        </div>
-        <div className={styles.inputArea}>
           <Button
             color={data.tenant.mainColor}
-            label="Enviar"
+            label="Fazer Login"
             onClick={handleSubmit}
-            fill
+            fill={true}
           />
         </div>
       </div>
@@ -69,7 +60,7 @@ const Forget = (data: Props) => {
   );
 }
 
-export default Forget;
+export default ForgetSuccess;
 
 type Props = {
   tenant: Tenant
