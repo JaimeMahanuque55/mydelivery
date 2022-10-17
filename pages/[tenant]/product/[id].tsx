@@ -5,12 +5,15 @@ import { Button } from '../../../components/Button';
 import { Header } from '../../../components/Header';
 import { useAppContext } from '../../../contexts/AppContext';
 import { useApi } from '../../../libs/useApi';
+import { useFormater } from '../../../libs/useFormatter';
 import styles from '../../../styles/product-id.module.css';
 import { Product } from '../../../types/Product';
 import { Tenant } from '../../../types/Tenant';
 
 const Product = (data: Props) => {
   const { tenant, setTenant } = useAppContext();
+
+  const formater = useFormater();
 
   const handleAddToCart = () => {
 
@@ -47,7 +50,7 @@ const Product = (data: Props) => {
       <div className={styles.qtText}>Quantidade</div>
       <div className={styles.area}>
         <div className={styles.areaLeft}>...</div>
-        <div className={styles.areaRight}>...</div>
+        <div className={styles.areaRight} style={{ color: data.tenant.mainColor }}>{formater.formatPrice(data.product.price)}</div>
       </div>
 
       <div className={styles.buttonArea}>

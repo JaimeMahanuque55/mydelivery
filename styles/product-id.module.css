@@ -58,3 +58,30 @@
   color: rgba(27, 27, 27, .5);
   margin: 24px;
 }
+
+.qtText {
+  font-weight: 400;
+  font-size: 16px;
+  color: #1b1b1b;
+  margin: 0 24px 16px 24px;
+}
+
+.area {
+  margin: 0 24px;
+  display: flex;
+  align-items: center;
+}
+
+.areaLeft {}
+
+.areaRight {
+  flex: 1;
+  text-align: right;
+  font-weight: 600;
+  font-size: 40px;
+  color: #000;
+}
+
+.buttonArea {
+  margin: 50px 24px;
+}
