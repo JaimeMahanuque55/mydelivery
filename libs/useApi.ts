@@ -12,7 +12,7 @@ const TemporaryOneProduct: Product = {
 
 export const useApi = (tenantSlug: string) => ({
 
-  getTenant: (): boolean | Tenant => {
+  getTenant: async () => {
     switch (tenantSlug) {
       case 'graveburger':
         return {
@@ -34,14 +34,14 @@ export const useApi = (tenantSlug: string) => ({
       default: return false;
     }
   },
-  getAllProducts: () => {
+  getAllProducts: async () => {
     let products = [];
     for (let q = 0; q < 10; q++) {
       products.push(TemporaryOneProduct)
     }
     return products;
   },
-  getProduct: (id: string) => {
+  getProduct: async (id: string) => {
     return TemporaryOneProduct;
   }
 
