@@ -14,7 +14,7 @@ import { Tenant } from '../../../types/Tenant';
 const Product = (data: Props) => {
   const { tenant, setTenant } = useAppContext();
 
-  const [qtCount, setQtCount] = useState(0);
+  const [qtCount, setQtCount] = useState(1);
 
   const formater = useFormater();
 

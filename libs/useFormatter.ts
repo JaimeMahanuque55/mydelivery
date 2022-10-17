@@ -5,5 +5,12 @@ export const useFormater = () => ({
       style: 'currency',
       currency: 'MZN'
     })
+  },
+  formatQuantity: (qt: number, digits: number) => {
+    if (qt < 10) {
+      return `${'0'.repeat(digits)}${qt}`;
+    } else {
+      return qt;
+    }
   }
 })

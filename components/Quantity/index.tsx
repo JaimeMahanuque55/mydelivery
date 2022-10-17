@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import { useFormater } from '../../libs/useFormatter';
 import styles from './styles.module.css';
 
 type Props = {
@@ -10,11 +12,22 @@ type Props = {
 
 export const Quantity = ({ color, count, onUpdateCount, min, max }: Props) => {
 
+  const formatter = useFormater();
+
+  const [canRemove, setCanRemove] = useState(false);
+  const [canAdd, setCanAdd] = useState(false);
+
+  useEffect(() => {
+    setCanRemove((!min || (min && count > min)) ? true : false);
+    setCanAdd((!max || (max && count < max)) ? true : false)
+  }, [count, min, max]);
+
+
   const handleRemove = () => {
-    onUpdateCount(count - 1)
+    if (canRemove) onUpdateCount(count - 1);
   }
   const handleAdd = () => {
-    onUpdateCount(count + 1)
+    if (canAdd) onUpdateCount(count + 1);
   }
 
 
@@ -23,13 +36,21 @@ export const Quantity = ({ color, count, onUpdateCount, min, max }: Props) => {
       <div
         className={styles.button}
         onClick={handleRemove}
+        style={{
+          color: canRemove ? '#fff' : '#96a3ab',
+          backgroundColor: canRemove ? color : '#f2f4f5'
+        }}
       >
         -
       </div>
-      <div className={styles.qt}>{count}</div>
+      <div className={styles.qt}>{formatter.formatQuantity(count, 1)}</div>
       <div
         className={styles.button}
         onClick={handleAdd}
+        style={{
+          color: canAdd ? '#fff' : '#96a3ab',
+          backgroundColor: canAdd ? color : '#f2f4f5'
+        }}
       >
         +
       </div>
