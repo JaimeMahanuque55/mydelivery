@@ -1,6 +1,7 @@
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
+import { Header } from '../../../components/Header';
 import { useAppContext } from '../../../contexts/AppContext';
 import { useApi } from '../../../libs/useApi';
 import styles from '../../../styles/product-id.module.css';
@@ -19,6 +20,19 @@ const Product = (data: Props) => {
       <Head>
         <title>{data.product.name} | {data.tenant.name}</title>
       </Head>
+
+      <div className={styles.headerArea}>
+        <Header
+          color={data.tenant.mainColor}
+          backHref={`/${data.tenant.slug}`} title="Produto" />
+      </div>
+
+      <div className={styles.headerBg} style={{ backgroundColor: data.tenant.mainColor }}></div>
+
+      <div className={styles.productImage}>
+        <img src={data.product.image} alt="" />
+      </div>
+      ...
     </div>
   );
 }
