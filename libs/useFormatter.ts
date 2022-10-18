@@ -6,11 +6,19 @@ export const useFormater = () => ({
       currency: 'MZN'
     })
   },
-  formatQuantity: (qt: number, digits: number) => {
-    if (qt < 10) {
-      return `${'0'.repeat(digits)}${qt}`;
-    } else {
-      return qt;
-    }
+  formatQuantity: (qt: number, mindigits: number) => {
+    if (qt.toString().length >= mindigits) return qt.toString();
+
+    const remain = mindigits - qt.toString().length;
+    return `${'0'.repeat(remain)}${qt}`;
+
+
+
+
+    // if (qt < 10) {
+    //   return `${'0'.repeat(mindigits)}${qt}`;
+    // } else {
+    //   return qt;
+    // }
   }
 })
