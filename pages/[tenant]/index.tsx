@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Banner } from '../../components/Banner';
 import { ProductItem } from '../../components/ProductItem';
 import { SearchInput } from '../../components/SearchInput';
+import Sidebar from '../../components/Sidebar';
 import { useAppContext } from '../../contexts/app';
 import { useApi } from '../../libs/useApi';
 import styles from '../../styles/Home.module.css';
@@ -35,6 +36,7 @@ const Home = (data: Props) => {
               <div className={styles.menuButtonLine} style={{ backgroundColor: tenant?.mainColor }}></div>
               <div className={styles.menuButtonLine} style={{ backgroundColor: tenant?.mainColor }}></div>
             </div>
+            <Sidebar />
           </div>
         </div>
         <div className={styles.headerBottom}>
