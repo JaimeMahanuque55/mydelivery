@@ -7,7 +7,7 @@ import { Button } from '../../components/Button';
 import { Header } from '../../components/Header';
 import { Icon } from '../../components/Icon';
 import { InpuField } from '../../components/InputField';
-import { useAppContext } from '../../contexts/AppContext';
+import { useAppContext } from '../../contexts/app';
 import { useApi } from '../../libs/useApi';
 import styles from '../../styles/forgetSuccess.module.css';
 import { Tenant } from '../../types/Tenant';

@@ -2,6 +2,8 @@ import { createContext, useReducer } from 'react';
 import { ContextType, DataType, ProviderType } from './types';
 import { reducer } from './reducer';
 
+export { useAppContext } from './hook';
+
 const initialState: DataType = {
   tenant: null
 }
