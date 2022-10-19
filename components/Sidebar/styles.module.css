@@ -64,7 +64,6 @@
 
 .menu {
   flex: 1;
-  background-color: #ccc;
   padding: 25px 66px;
   display: flex;
   flex-direction: column;

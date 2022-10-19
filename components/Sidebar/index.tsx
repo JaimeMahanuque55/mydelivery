@@ -1,6 +1,7 @@
 import { useAuthContext } from '../../contexts/auth';
 import { Tenant } from '../../types/Tenant';
 import { Button } from '../Button';
+import { SidebarMenuItem } from '../SidebarMenuItem';
 import styles from './styles.module.css';
 
 type Props = {
@@ -49,7 +50,14 @@ const Sidebar = ({ tenant, open, onClose }: Props) => {
           </div>
         </div>
         <div className={styles.line}></div>
-        <div className={styles.menu}>...</div>
+        <div className={styles.menu}>
+          <SidebarMenuItem
+            color={'#6a7d8b'}
+            icon="menu"
+            label="Cardapio"
+            onClick={() => { }}
+          />
+        </div>
       </div>
     </div>
   )
