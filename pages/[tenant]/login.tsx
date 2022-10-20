@@ -8,7 +8,6 @@ import { Header } from '../../components/Header';
 import { InpuField } from '../../components/InputField';
 import { useAppContext } from '../../contexts/app';
 import { useAuthContext } from '../../contexts/auth';
-// import { useApi } from '../../libs/useApi';
 import { useApi } from '../../libs/useApi';
 import styles from '../../styles/login.module.css';
 import { Tenant } from '../../types/Tenant';
