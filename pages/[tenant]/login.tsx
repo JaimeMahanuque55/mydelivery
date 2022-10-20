@@ -7,12 +7,15 @@ import { Button } from '../../components/Button';
 import { Header } from '../../components/Header';
 import { InpuField } from '../../components/InputField';
 import { useAppContext } from '../../contexts/app';
+import { useAuthContext } from '../../contexts/auth';
 // import { useApi } from '../../libs/useApi';
 import { useApi } from '../../libs/useApi';
 import styles from '../../styles/login.module.css';
 import { Tenant } from '../../types/Tenant';
 
 const Login = (data: Props) => {
+  const { setToken, setUser } = useAuthContext();
+
   const { tenant, setTenant } = useAppContext();
 
   useEffect(() => {
@@ -25,7 +28,12 @@ const Login = (data: Props) => {
   const [password, setPassword] = useState('');
 
   const handleSubmit = () => {
-
+    setToken('1234');
+    setUser({
+      name: 'Jaime',
+      email: 'jaimemahanuque55@gmail.com'
+    });
+    router.push(`/${data.tenant.slug}`)
   }
   const handleSignup = () => {
     router.push(`/${data.tenant.slug}/signup`);
