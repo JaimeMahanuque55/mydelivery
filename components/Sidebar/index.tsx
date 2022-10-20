@@ -13,7 +13,7 @@ type Props = {
 
 const Sidebar = ({ tenant, open, onClose }: Props) => {
 
-  const { user } = useAuthContext();
+  const { user, setToken } = useAuthContext();
 
   const router = useRouter();
   return (
@@ -58,13 +58,13 @@ const Sidebar = ({ tenant, open, onClose }: Props) => {
             color={'#6a7d8b'}
             icon="menu"
             label="Cardapio"
-            onClick={() => { }}
+            onClick={onClose}
           />
           <SidebarMenuItem
             color={'#6a7d8b'}
             icon="cart"
             label="Sacola"
-            onClick={() => { }}
+            onClick={() => router.push(`/${tenant.slug}/cart`)}
           />
           <SidebarMenuItem
             color={'#6a7d8b'}
@@ -77,7 +77,7 @@ const Sidebar = ({ tenant, open, onClose }: Props) => {
             color={'#6a7d8b'}
             icon="order"
             label="Meus Pedidos"
-            onClick={() => { }}
+            onClick={() => router.push(`/${tenant.slug}/orders`)}
           />
           <SidebarMenuItem
             color={'#6a7d8b'}
@@ -93,7 +93,10 @@ const Sidebar = ({ tenant, open, onClose }: Props) => {
               color={'#6a7d8b'}
               icon="logout"
               label="Sair"
-              onClick={() => { }}
+              onClick={() => {
+                setToken('');
+                onClose();
+              }}
             />
           }
         </div>
