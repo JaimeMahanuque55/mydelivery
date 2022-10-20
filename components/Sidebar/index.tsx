@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { useAuthContext } from '../../contexts/auth';
 import { Tenant } from '../../types/Tenant';
 import { Button } from '../Button';
@@ -13,6 +14,8 @@ type Props = {
 const Sidebar = ({ tenant, open, onClose }: Props) => {
 
   const { user } = useAuthContext();
+
+  const router = useRouter();
   return (
     <div
       className={styles.container}
@@ -36,7 +39,7 @@ const Sidebar = ({ tenant, open, onClose }: Props) => {
               <Button
                 color={tenant.mainColor}
                 label="Fazer Login"
-                onClick={() => { }}
+                onClick={() => router.push(`/${tenant.slug}/login`)}
                 fill
               />
             }
@@ -57,6 +60,42 @@ const Sidebar = ({ tenant, open, onClose }: Props) => {
             label="Cardapio"
             onClick={() => { }}
           />
+          <SidebarMenuItem
+            color={'#6a7d8b'}
+            icon="cart"
+            label="Sacola"
+            onClick={() => { }}
+          />
+          <SidebarMenuItem
+            color={'#6a7d8b'}
+            icon="fav"
+            label="Favoritos"
+            onClick={() => { }}
+            disabled
+          />
+          <SidebarMenuItem
+            color={'#6a7d8b'}
+            icon="order"
+            label="Meus Pedidos"
+            onClick={() => { }}
+          />
+          <SidebarMenuItem
+            color={'#6a7d8b'}
+            icon="config"
+            label="Configuracoes"
+            onClick={() => { }}
+            disabled
+          />
+        </div>
+        <div className={styles.menuBottom}>
+          {user &&
+            <SidebarMenuItem
+              color={'#6a7d8b'}
+              icon="logout"
+              label="Sair"
+              onClick={() => { }}
+            />
+          }
         </div>
       </div>
     </div>

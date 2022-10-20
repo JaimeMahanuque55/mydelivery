@@ -68,3 +68,9 @@
   display: flex;
   flex-direction: column;
 }
+
+.menuBottom {
+  padding: 25px 66px;
+  display: flex;
+  flex-direction: column;
+}

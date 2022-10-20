@@ -34,6 +34,7 @@ export const useApi = (tenantSlug: string) => ({
       default: return false;
     }
   },
+
   getAllProducts: async () => {
     let products = [];
     for (let q = 0; q < 10; q++) {
