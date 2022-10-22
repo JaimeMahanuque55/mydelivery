@@ -24,11 +24,23 @@ const Home = (data: Props) => {
   }, []);
 
   const [products, setProducts] = useState<Product[]>(data.products);
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const handleSearch = (searchValue: string) => {
-    console.log(`Voce esta buscando por: ${searchValue}`)
-  }
+  // Search
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [searchText, setSearchText] = useState('');
+
+  const handleSearch = (value: string) => setSearchText(value);
+  useEffect(() => {
+    let newFilteredProducts: Product[] = [];
+    for (let product of data.products) {
+      if (product.name.toLocaleLowerCase().indexOf(searchText.toLocaleLowerCase()) > -1) {
+        newFilteredProducts.push(product);
+      }
+    }
+    setFilteredProducts(newFilteredProducts);
+  }, [searchText]);
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
