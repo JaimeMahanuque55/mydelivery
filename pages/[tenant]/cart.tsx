@@ -10,6 +10,9 @@ import { User } from '../../types/User';
 import { useAuthContext } from '../../contexts/auth';
 import Head from 'next/head';
 import { Header } from '../../components/Header';
+import { InpuField } from '../../components/InputField';
+import { Button } from '../../components/Button';
+import { useFormater } from '../../libs/useFormatter';
 
 const Cart = (data: Props) => {
   const { setToken, setUser } = useAuthContext();
@@ -20,6 +23,15 @@ const Cart = (data: Props) => {
     setToken(data.token);
     if (data.user) setUser(data.user);
   }, []);
+
+  const formater = useFormater();
+
+  const [shippingInput, setShippingInput] = useState('');
+  const [shippingPrice, setShippingPrice] = useState(0);
+
+  const handleShippingCalc = () => {
+
+  }
 
 
 
@@ -40,6 +52,38 @@ const Cart = (data: Props) => {
       <div className={styles.productList}>
 
       </div>
+      <div className={styles.shippingArea}>
+        <div className={styles.shippingTitle}>
+          Calcular frete e prazo
+        </div>
+        <div className={styles.shippingForm}>
+          <InpuField
+            color={data.tenant.mainColor}
+            placeholder="Digite seu frete"
+            value={shippingInput}
+            onChange={newValue => setShippingInput(newValue)}
+          />
+          <Button
+            color={data.tenant.mainColor}
+            label="Ok"
+            onClick={handleShippingCalc}
+          />
+        </div>
+
+        <div className={styles.shippingInfo}>
+          <div className={styles.shippingAddress}>Rua sei la</div>
+          <div className={styles.shippingTime}>
+            <div className={styles.shippingTimeText}>Receba em ate 20 min</div>
+            <div
+              className={styles.shippingPrice}
+              style={{ color: data.tenant.mainColor }}
+            >
+              {formater.formatPrice(shippingPrice)}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={styles.resumeArea}></div>
     </div>
   );
 }
