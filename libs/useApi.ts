@@ -19,8 +19,8 @@ export const useApi = (tenantSlug: string) => ({
         return {
           slug: 'graveburger',
           name: 'GraveBurger',
-          mainColor: '#f00',
-          secondColor: '#0f0'
+          mainColor: '#fb9400',
+          secondColor: '#fff9f2'
         }
 
         break;
@@ -28,8 +28,8 @@ export const useApi = (tenantSlug: string) => ({
         return {
           slug: 'gravepizza',
           name: 'GravePizza',
-          mainColor: '#00f',
-          secondColor: '#ccc'
+          mainColor: '#6ab70a',
+          secondColor: '#e0e0e0'
         }
         break;
       default: return false;
