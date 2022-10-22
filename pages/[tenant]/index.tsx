@@ -12,6 +12,7 @@ import { Tenant } from '../../types/Tenant';
 import { getCookie } from 'cookies-next'
 import { User } from '../../types/User';
 import { useAuthContext } from '../../contexts/auth';
+import NoItemsIcon from '../../public/assets/noItems.svg';
 
 const Home = (data: Props) => {
   const { setToken, setUser } = useAuthContext();
@@ -71,18 +72,50 @@ const Home = (data: Props) => {
           />
         </div>
       </header>
+      {searchText &&
+        <>
+          <div className={styles.searchText}>
+            Procurando por: <strong>{searchText}</strong>
+          </div>
+          {filteredProducts.length > 0 &&
+            <div className={styles.grid}>
 
-      <Banner />
+              {filteredProducts.map((item, index) => (
+                <ProductItem
+                  key={index}
+                  data={item}
+                />
+              ))}
+            </div>
+          }
 
-      <div className={styles.grid}>
+          {filteredProducts.length === 0 &&
+            <div className={styles.noProducts}>
+              <NoItemsIcon color="#e0e0e0" />
+              <div className={styles.noProductsText}>
+                Ops! Não há itens com este nome
+              </div>
+            </div>
+          }
+        </>
+      }
 
-        {products.map((item, index) => (
-          <ProductItem
-            key={index}
-            data={item}
-          />
-        ))}
-      </div>
+      {!searchText &&
+        <>
+          <Banner />
+
+          <div className={styles.grid}>
+
+            {products.map((item, index) => (
+              <ProductItem
+                key={index}
+                data={item}
+              />
+            ))}
+          </div>
+        </>
+      }
+
     </div>
   );
 }
