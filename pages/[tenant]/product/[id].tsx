@@ -1,3 +1,4 @@
+import { getCookie, hasCookie } from 'cookies-next';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
@@ -8,26 +9,41 @@ import { useAppContext } from '../../../contexts/app';
 import { useApi } from '../../../libs/useApi';
 import { useFormater } from '../../../libs/useFormatter';
 import styles from '../../../styles/product-id.module.css';
+import { CartCookie } from '../../../types/CartCookie';
 import { Product } from '../../../types/Product';
 import { Tenant } from '../../../types/Tenant';
 
 const Product = (data: Props) => {
   const { tenant, setTenant } = useAppContext();
+  useEffect(() => {
+    setTenant(data.tenant);
+  }, []);
 
   const [qtCount, setQtCount] = useState(1);
 
   const formater = useFormater();
 
   const handleAddToCart = () => {
+    let cart: CartCookie[] = [];
+
+    // create or get existing cart
+    if (hasCookie('cart')) {
+      const cartCookie = getCookie('cart');
+      const cartJson: CartCookie[] = JSON.parse(cartCookie as string);
+      for (let i in cartJson) {
+        if (cartJson[i].qt && cartJson[i].id) {
+          cart.push(cartJson[i]);
+        }
+      }
+    }
+
+    // search product in cart
+
   }
 
   const handleUpdateQt = (newCount: number) => {
     setQtCount(newCount)
   }
-
-  useEffect(() => {
-    setTenant(data.tenant);
-  }, []);
 
   return (
     <div className={styles.container}>
@@ -86,7 +102,6 @@ type Props = {
   product: Product;
 }
 
-
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { tenant: tenantSlug, id } = context.query;
   const api = useApi(tenantSlug as string);
@@ -98,8 +113,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       redirect: { destination: '/', permanent: false }
     }
   }
-  // Get Product
 
+  // Get Product
   const product = await api.getProduct(id as string);
 
   return {
