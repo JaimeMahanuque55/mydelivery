@@ -58,3 +58,44 @@
   font-size: 16px;
   color: #000;
 }
+
+.resumeArea {
+  background-color: #f9f9fb;
+  border-radius: 8px;
+  margin-top: 16px;
+  padding: 48px 32px;
+}
+
+.resumeItem {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  align-items: center;
+}
+
+.resumeLeft {
+  font-weight: 400;
+  font-size: 16px;
+  color: #000;
+}
+
+.resumeRight {
+  font-weight: 500;
+  font-size: 16px;
+  color: #000;
+}
+
+.resumeLine {
+  border-top: 1px dashed #96a3ab;
+  margin-bottom: 29px;
+}
+
+.resumeRightBig {
+  font-weight: 600;
+  font-size: 24px;
+  color: #000;
+}
+
+.resumeButton {
+  margin-top: 40px;
+}

@@ -28,11 +28,15 @@ const Cart = (data: Props) => {
 
   const [shippingInput, setShippingInput] = useState('');
   const [shippingPrice, setShippingPrice] = useState(0);
+  const [subtotal, setSubtotal] = useState(0);
 
   const handleShippingCalc = () => {
 
   }
 
+  const handleFinish = () => {
+
+  }
 
 
   return (
@@ -83,7 +87,41 @@ const Cart = (data: Props) => {
           </div>
         </div>
       </div>
-      <div className={styles.resumeArea}></div>
+
+      <div className={styles.resumeArea}>
+        <div className={styles.resumeItem}>
+          <div className={styles.resumeLeft}>Subtotal</div>
+          <div className={styles.resumeRight}>{formater.formatPrice(subtotal)}</div>
+        </div>
+
+        <div className={styles.resumeItem}>
+          <div className={styles.resumeLeft}>Frete</div>
+          <div className={styles.resumeRight}>
+            {shippingPrice > 0 ? formater.formatPrice(shippingPrice) : '--'}
+          </div>
+        </div>
+
+        <div className={styles.resumeLine}></div>
+
+        <div className={styles.resumeItem}>
+          <div className={styles.resumeLeft}>Total</div>
+          <div
+            className={styles.resumeRightBig}
+            style={{ color: data.tenant.mainColor }}
+          >
+            {formater.formatPrice(shippingPrice + subtotal)}
+          </div>
+        </div>
+        <div className={styles.resumeButton}>
+          <Button
+            color={data.tenant.mainColor}
+            label="Continuar"
+            onClick={handleFinish}
+            fill
+          />
+        </div>
+
+      </div>
     </div>
   );
 }

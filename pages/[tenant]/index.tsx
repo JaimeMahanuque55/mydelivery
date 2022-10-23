@@ -144,7 +144,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   // GET Logged User
   // const token = context.req.cookies.token;
-  const token = getCookie('token', context); // I need to grab the context because it's server side
+  const token = getCookie('token', context) ?? ""; // I need to grab the context because it's server side
   const user = await api.authorizeToken(token as string);
   // Get Products
 
