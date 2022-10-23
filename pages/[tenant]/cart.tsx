@@ -13,6 +13,7 @@ import { Header } from '../../components/Header';
 import { InpuField } from '../../components/InputField';
 import { Button } from '../../components/Button';
 import { useFormater } from '../../libs/useFormatter';
+import { CartItem } from '../../types/CartItem';
 
 const Cart = (data: Props) => {
   const { setToken, setUser } = useAuthContext();
@@ -130,9 +131,9 @@ export default Cart;
 
 type Props = {
   tenant: Tenant;
-  products: Product[];
   token: string;
   user: User | null;
+  cart: CartItem[]
 }
 
 
@@ -152,16 +153,17 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   // const token = context.req.cookies.token;
   const token = getCookie('token', context); // I need to grab the context because it's server side
   const user = await api.authorizeToken(token as string);
-  // Get Products
+  // Get Cart Products
 
-  const products = await api.getAllProducts();
+  const cartCookie = getCookie('cart', context);
+  const cart = await api.getCartProducts(cartCookie as string);
 
   return {
     props: {
       tenant,
-      products,
       user,
-      token
+      token,
+      cart
     }
   }
 
