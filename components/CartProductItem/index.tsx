@@ -23,7 +23,12 @@ export const CartProductItem = ({ color, quantity, product, onChange }: Props) =
           {product.categoryName}
         </div>
         <div className={styles.productName}>{product.name}</div>
-        <div className={styles.productPrice}>{formatter.formatPrice(product.price)}</div>
+        <div
+          className={styles.productPrice}
+          style={{ color: color }}
+        >
+          {formatter.formatPrice(product.price)}
+        </div>
       </div>
       <div className={styles.qtControl}>
         <Quantity
