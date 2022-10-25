@@ -15,6 +15,7 @@ import { Button } from '../../components/Button';
 import { useFormater } from '../../libs/useFormatter';
 import { CartItem } from '../../types/CartItem';
 import { useRouter } from 'next/router';
+import { CartProductItem } from '../../components/CartProductItem';
 
 const Cart = (data: Props) => {
   const { setToken, setUser } = useAuthContext();
@@ -60,6 +61,10 @@ const Cart = (data: Props) => {
     router.push(`${data.tenant.slug}/checkout`);
   }
 
+  const handleCartChange = () => {
+
+  }
+
 
   return (
     <div className={styles.container}>
@@ -76,7 +81,15 @@ const Cart = (data: Props) => {
       <div className={styles.productsQuantity}>{cart.length} {cart.length === 1 ? 'item' : 'itens'}</div>
 
       <div className={styles.productList}>
-
+        {cart.map((cartItem, index) => (
+          <CartProductItem
+            key={index}
+            color={data.tenant.mainColor}
+            quantity={cartItem.qt}
+            product={cartItem.product}
+            onChange={handleCartChange}
+          />
+        ))}
       </div>
       <div className={styles.shippingArea}>
         <div className={styles.shippingTitle}>
