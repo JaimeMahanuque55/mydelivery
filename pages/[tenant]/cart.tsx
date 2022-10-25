@@ -14,6 +14,7 @@ import { InpuField } from '../../components/InputField';
 import { Button } from '../../components/Button';
 import { useFormater } from '../../libs/useFormatter';
 import { CartItem } from '../../types/CartItem';
+import { useRouter } from 'next/router';
 
 const Cart = (data: Props) => {
   const { setToken, setUser } = useAuthContext();
@@ -26,17 +27,37 @@ const Cart = (data: Props) => {
   }, []);
 
   const formater = useFormater();
+  const router = useRouter();
 
+  // Product Control
+  const [cart, setCart] = useState<CartItem[]>(data.cart);
+
+
+  // Shipping
   const [shippingInput, setShippingInput] = useState('');
+  const [shippingAddress, setShippingAddress] = useState('');
   const [shippingPrice, setShippingPrice] = useState(0);
-  const [subtotal, setSubtotal] = useState(0);
-
+  const [shippingTime, setShippingTime] = useState(0);
   const handleShippingCalc = () => {
-
+    setShippingAddress('Rua bla bla bla')
+    setShippingPrice(120);
+    setShippingTime(30);
   }
 
-  const handleFinish = () => {
+  // Resume
+  const [subtotal, setSubtotal] = useState(0);
 
+  useEffect(() => {
+    let sub = 0;
+    for (let i in cart) {
+      sub += cart[i].product.price * cart[i].qt;
+    }
+
+    setSubtotal(sub);
+  }, [cart]);
+
+  const handleFinish = () => {
+    router.push(`${data.tenant.slug}/checkout`);
   }
 
 
@@ -52,7 +73,7 @@ const Cart = (data: Props) => {
         title="Sacola"
       />
 
-      <div className={styles.productsQuantity}>x itens</div>
+      <div className={styles.productsQuantity}>{cart.length} {cart.length === 1 ? 'item' : 'itens'}</div>
 
       <div className={styles.productList}>
 
@@ -75,18 +96,20 @@ const Cart = (data: Props) => {
           />
         </div>
 
-        <div className={styles.shippingInfo}>
-          <div className={styles.shippingAddress}>Rua sei la</div>
-          <div className={styles.shippingTime}>
-            <div className={styles.shippingTimeText}>Receba em ate 20 min</div>
-            <div
-              className={styles.shippingPrice}
-              style={{ color: data.tenant.mainColor }}
-            >
-              {formater.formatPrice(shippingPrice)}
+        {shippingTime > 0 &&
+          <div className={styles.shippingInfo}>
+            <div className={styles.shippingAddress}>{shippingAddress}</div>
+            <div className={styles.shippingTime}>
+              <div className={styles.shippingTimeText}>Receba em ate {shippingTime} minutos</div>
+              <div
+                className={styles.shippingPrice}
+                style={{ color: data.tenant.mainColor }}
+              >
+                {formater.formatPrice(shippingPrice)}
+              </div>
             </div>
           </div>
-        </div>
+        }
       </div>
 
       <div className={styles.resumeArea}>
@@ -153,8 +176,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   // const token = context.req.cookies.token;
   const token = getCookie('token', context); // I need to grab the context because it's server side
   const user = await api.authorizeToken(token as string);
-  // Get Cart Products
 
+  // Get Cart Products
   const cartCookie = getCookie('cart', context);
   const cart = await api.getCartProducts(cartCookie as string);
 
