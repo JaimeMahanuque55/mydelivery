@@ -81,7 +81,7 @@ const Cart = (data: Props) => {
   }, [cart]);
 
   const handleFinish = () => {
-    router.push(`${data.tenant.slug}/checkout`);
+    router.push(`/${data.tenant.slug}/checkout`);
   }
 
 
