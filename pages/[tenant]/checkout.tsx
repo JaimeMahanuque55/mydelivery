@@ -64,7 +64,7 @@ const Checkout = (data: Props) => {
   const [shippingPrice, setShippingPrice] = useState(0);
   const [shippingTime, setShippingTime] = useState(0);
   const handleShippingCalc = () => {
-    setShippingAddress('Rua bla bla bla')
+    setShippingAddress('Rua bla bla bla ')
     setShippingPrice(120);
     setShippingTime(30);
   }
@@ -85,6 +85,9 @@ const Checkout = (data: Props) => {
     router.push(`/${data.tenant.slug}/checkout`);
   }
 
+  const handleChangeAddress = () => {
+    console.log("Indo para tela de endereco")
+  }
 
 
 
@@ -109,8 +112,8 @@ const Checkout = (data: Props) => {
               color={data.tenant.mainColor}
               leftIcon={"location"}
               rightIcon={"rightArrow"}
-              value={"Rua bla bla bla"}
-              onClick={() => { }}
+              value={"Rua bla bla bla Rua bla bla bla Rua bla bla bla Rua bla bla bla "}
+              onClick={handleChangeAddress}
             />
           </div>
         </div>
