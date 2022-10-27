@@ -187,6 +187,7 @@ const Checkout = (data: Props) => {
             quantity={cartItem.qt}
             product={cartItem.product}
             onChange={handleCartChange}
+            noEdit
           />
         ))}
       </div>
