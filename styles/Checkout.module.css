@@ -19,6 +19,31 @@
   margin-bottom: 8px;
 }
 
+.paymentTypes {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.paymentTypes .paymentBtn {
+  flex: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .productsQuantity {
   border-top: 1.5px solid rgba(27, 27, 27, .1);
   border-bottom: 1.5px solid rgba(27, 27, 27, .1);

@@ -22,7 +22,7 @@ export const ButtonWithIcon = ({ color, leftIcon, rightIcon, value, onClick, fil
       {leftIcon &&
         <div
           className={styles.leftSide}
-          style={{ backgroundColor: fill ? 'rgba(0,0,0, .1)' : '#fff' }}
+          style={{ backgroundColor: fill ? 'rgba(0,0,0, .05)' : '#fff' }}
         >
           <Icon
             color={fill ? '#fff' : color}
