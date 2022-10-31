@@ -48,6 +48,19 @@ const MyAddresses = (data: Props) => {
   // Menu Events
   const [menuOpened, setMenuOpened] = useState(0);
 
+  const handleMenuEvent = (event: MouseEvent) => {
+    const tagName = (event.target as Element).tagName;
+    if (!['path', 'svg'].includes(tagName)) {
+      setMenuOpened(0);
+    }
+  }
+
+  useEffect(() => {
+    window.removeEventListener('click', handleMenuEvent);
+    window.addEventListener('click', handleMenuEvent);
+    return () => window.removeEventListener('click', handleMenuEvent);
+  }, [menuOpened]);
+
   return (
     <div className={styles.container}>
       <Head>

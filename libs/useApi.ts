@@ -83,7 +83,7 @@ export const useApi = (tenantSlug: string) => ({
   getUserAddresses: async (email: string) => {
     const addresses: Address[] = [];
 
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 9; i++) {
       addresses.push({
         id: i + 1,
         street: 'Rua das flores',
