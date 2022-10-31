@@ -34,7 +34,7 @@ const MyAddresses = (data: Props) => {
   }
 
   const handleAddressSelect = (address: Address) => {
-
+    console.log(`Selecionou o endereco: ${address.street} ${address.number}`)
   }
 
   const handleAddressEdit = (id: number) => {

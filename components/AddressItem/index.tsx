@@ -14,7 +14,7 @@ export const AddressItem = ({ color, address, onSelect, onEdit, onDelete }: Prop
 
   return (
     <div className={styles.container}>
-      <div className={styles.addressArea}>
+      <div className={styles.addressArea} onClick={() => onSelect(address)}>
         <div className={styles.addressIcon}>
           <Icon
             color={color}
@@ -23,7 +23,7 @@ export const AddressItem = ({ color, address, onSelect, onEdit, onDelete }: Prop
             height={24}
           />
         </div>
-        <div className={styles.addressText}>{`${address.street}, ${address.number}, ${address.city}`}</div>
+        <div className={styles.addressText}>{`${address.street}, ${address.number}, ${address.city} ${address.number}, ${address.city} `}</div>
       </div>
       <div className={styles.btnArea}>
         <div className={styles.menuIcon}>
