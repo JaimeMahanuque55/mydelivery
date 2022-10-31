@@ -27,3 +27,19 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.menuIcon {
+  background-color: red;
+  padding-left: 24px;
+}
+
+.popup {
+  position: absolute;
+  right: 24px;
+  background-color: #fff;
+  border: 2px solid #f9f9fb;
+  box-shadow: 0px 16px 40px rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  padding: 19px;
+
+}

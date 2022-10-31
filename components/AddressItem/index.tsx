@@ -8,9 +8,11 @@ type Props = {
   onSelect: (address: Address) => void;
   onEdit: (id: number) => void;
   onDelete: (id: number) => void;
+  menuOpened: number;
+  setMenuOpened: (id: number) => void;
 }
 
-export const AddressItem = ({ color, address, onSelect, onEdit, onDelete }: Props) => {
+export const AddressItem = ({ color, address, onSelect, onEdit, onDelete, menuOpened, setMenuOpened }: Props) => {
 
   return (
     <div className={styles.container}>
@@ -26,7 +28,7 @@ export const AddressItem = ({ color, address, onSelect, onEdit, onDelete }: Prop
         <div className={styles.addressText}>{`${address.street}, ${address.number}, ${address.city} ${address.number}, ${address.city} `}</div>
       </div>
       <div className={styles.btnArea}>
-        <div className={styles.menuIcon}>
+        <div className={styles.menuIcon} onClick={() => setMenuOpened(address.id)}>
           <Icon
             color='#6a7d8b'
             icon='dots'
@@ -34,6 +36,10 @@ export const AddressItem = ({ color, address, onSelect, onEdit, onDelete }: Prop
             height={24}
           />
         </div>
+        {menuOpened === address.id &&
+          <div className={styles.popup}>OK</div>
+        }
+
       </div>
     </div>
   )

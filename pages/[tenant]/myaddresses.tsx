@@ -45,6 +45,8 @@ const MyAddresses = (data: Props) => {
 
   }
 
+  // Menu Events
+  const [menuOpened, setMenuOpened] = useState(0);
 
   return (
     <div className={styles.container}>
@@ -67,6 +69,8 @@ const MyAddresses = (data: Props) => {
             onSelect={handleAddressSelect}
             onEdit={handleAddressEdit}
             onDelete={handleAddressDelete}
+            menuOpened={menuOpened}
+            setMenuOpened={setMenuOpened}
           />
         ))}
       </div>
