@@ -38,11 +38,11 @@ const MyAddresses = (data: Props) => {
   }
 
   const handleAddressEdit = (id: number) => {
-
+    console.log(`Editando o ${id}`)
   }
 
   const handleAddressDelete = (id: number) => {
-
+    console.log(`Deletando o ${id}`)
   }
 
   // Menu Events
