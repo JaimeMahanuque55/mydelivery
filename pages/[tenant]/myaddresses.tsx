@@ -28,13 +28,19 @@ const MyAddresses = (data: Props) => {
 
   const formater = useFormater();
   const router = useRouter();
+  const api = useApi(data.tenant.slug);
 
   const handleNewAddress = () => {
     router.push(`/${data.tenant.slug}/newaddress`);
   }
 
-  const handleAddressSelect = (address: Address) => {
-    console.log(`Selecionou o endereco: ${address.street} ${address.number}`)
+  const handleAddressSelect = async (address: Address) => {
+    const price = await api.getShippingPrice(address);
+    if (price) {
+      // Save on context:
+      // Address and delivery price
+      router.push(`/${data.tenant.slug}/checkout`);
+    }
   }
 
   const handleAddressEdit = (id: number) => {
