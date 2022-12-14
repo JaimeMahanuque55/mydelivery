@@ -18,7 +18,7 @@ import { AddressItem } from '../../components/AddressItem';
 
 const MyAddresses = (data: Props) => {
   const { setToken, setUser } = useAuthContext();
-  const { tenant, setTenant } = useAppContext();
+  const { tenant, setTenant, setShippingAddress, setShippingPrice } = useAppContext();
 
   useEffect(() => {
     setTenant(data.tenant);
@@ -39,6 +39,8 @@ const MyAddresses = (data: Props) => {
     if (price) {
       // Save on context:
       // Address and delivery price
+      setShippingAddress(address);
+      setShippingPrice(price)
       router.push(`/${data.tenant.slug}/checkout`);
     }
   }
