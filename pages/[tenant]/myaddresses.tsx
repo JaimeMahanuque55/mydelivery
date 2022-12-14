@@ -30,9 +30,6 @@ const MyAddresses = (data: Props) => {
   const router = useRouter();
   const api = useApi(data.tenant.slug);
 
-  const handleNewAddress = () => {
-    router.push(`/${data.tenant.slug}/newaddress`);
-  }
 
   const handleAddressSelect = async (address: Address) => {
     const price = await api.getShippingPrice(address);
@@ -46,6 +43,7 @@ const MyAddresses = (data: Props) => {
   }
 
   const handleAddressEdit = (id: number) => {
+    router.push(`/${data.tenant.slug}/address/${id}`)
     console.log(`Editando o ${id}`)
   }
 
@@ -53,6 +51,9 @@ const MyAddresses = (data: Props) => {
     console.log(`Deletando o ${id}`)
   }
 
+  const handleNewAddress = () => {
+    router.push(`/${data.tenant.slug}/address/new`);
+  }
   // Menu Events
   const [menuOpened, setMenuOpened] = useState(0);
 
@@ -72,7 +73,7 @@ const MyAddresses = (data: Props) => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Meus Endereços</title>
+        <title>Meus Endereços | {data.tenant.name}</title>
       </Head>
 
       <Header
