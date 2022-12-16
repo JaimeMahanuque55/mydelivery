@@ -98,6 +98,11 @@ export const useApi = (tenantSlug: string) => ({
     return addresses;
   },
 
+  addUserAddress: async (address: Address) => {
+    console.log(address)
+    return { ...address, id: 2 }
+  },
+
   getShippingPrice: async (address: Address) => {
     return 9.16;
   }
