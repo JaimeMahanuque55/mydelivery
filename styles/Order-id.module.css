@@ -3,6 +3,34 @@
   padding: 50px 24px;
 }
 
+.orderInfoArea {
+  display: flex;
+  align-items: center;
+  border-bottom: 1.5px solid rgba(27, 27, 27, .1);
+  padding: 15px 0;
+}
+
+.orderInfoStatus {
+  font-weight: 600;
+  font-size: 11px;
+  padding: 6px 17px;
+  border-radius: 4px;
+}
+
+.orderInfoQt {
+  font-weight: 400;
+  font-size: 16px;
+  padding: 0 19px;
+}
+
+.orderInfoDate {
+  text-align: right;
+  font-weight: 400;
+  font-size: 16px;
+  color: #b3b3b3;
+  flex: 1;
+}
+
 .infoGroup {
   border-top: 1.5px solid rgba(27, 27, 27, .1);
   margin-bottom: 40px;

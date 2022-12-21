@@ -67,7 +67,10 @@ const OrderID = (data: Props) => {
       />
 
       <div className={styles.orderInfoArea}>
-        <div className={styles.orderInfoStatus}>
+        <div className={styles.orderInfoStatus} style={{
+          backgroundColor: orderStatusList[data.order.status].backgroundcolor,
+          color: orderStatusList[data.order.status].fontColor,
+        }}>
           {orderStatusList[data.order.status].label}
         </div>
         <div className={styles.orderInfoQt}>{data.order.products.length} {data.order.products.length === 1 ? 'item' : 'itens'}</div>
