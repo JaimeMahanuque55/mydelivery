@@ -34,6 +34,13 @@ const EditAddress = (data: Props) => {
 
   const [address, setAddress] = useState<Address>(data.address);
 
+  const changeAddressField = (
+    field: keyof Address,
+    value: typeof address[keyof Address]
+  ) => {
+    setAddress({ ...address, [field]: value });
+  }
+
 
 
   const verifyAddress = () => {
@@ -65,9 +72,11 @@ const EditAddress = (data: Props) => {
     return approved;
   }
 
-  const handleNewAddress = async () => {
+  const handleSaveAddress = async () => {
     if (verifyAddress()) {
+      await api.editUserAddress(address);
 
+      router.push(`/${data.tenant.slug}/myaddresses`);
     }
   }
 
@@ -91,7 +100,7 @@ const EditAddress = (data: Props) => {
               color={data.tenant.mainColor}
               placeholder="Digite um CEP"
               value={address.cep}
-              onChange={value => setAddressCep(value)}
+              onChange={value => changeAddressField('cep', value)}
               warning={errorFields.includes('cep')}
             />
           </div>
@@ -104,7 +113,7 @@ const EditAddress = (data: Props) => {
               color={data.tenant.mainColor}
               placeholder="Digite uma Rua"
               value={address.street}
-              onChange={value => setAddressStreet(value)}
+              onChange={value => changeAddressField('street', value)}
               warning={errorFields.includes('street')}
             />
           </div>
@@ -114,7 +123,7 @@ const EditAddress = (data: Props) => {
               color={data.tenant.mainColor}
               placeholder="Digite um numero"
               value={address.number}
-              onChange={value => setAddressNumber(value)}
+              onChange={value => changeAddressField('number', value)}
               warning={errorFields.includes('number')}
             />
           </div>
@@ -127,7 +136,7 @@ const EditAddress = (data: Props) => {
               color={data.tenant.mainColor}
               placeholder="Digite um Bairro"
               value={address.neighborhood}
-              onChange={value => setAddressNeighborhood(value)}
+              onChange={value => changeAddressField('neighborhood', value)}
               warning={errorFields.includes('neighborhood')}
             />
           </div>
@@ -140,7 +149,7 @@ const EditAddress = (data: Props) => {
               color={data.tenant.mainColor}
               placeholder="Digite uma Cidade"
               value={address.city}
-              onChange={value => setAddressCity(value)}
+              onChange={value => changeAddressField('city', value)}
               warning={errorFields.includes('city')}
             />
           </div>
@@ -153,7 +162,7 @@ const EditAddress = (data: Props) => {
               color={data.tenant.mainColor}
               placeholder="Digite um Estado"
               value={address.state}
-              onChange={value => setAddressState(value)}
+              onChange={value => changeAddressField('state', value)}
               warning={errorFields.includes('state')}
             />
           </div>
@@ -166,7 +175,7 @@ const EditAddress = (data: Props) => {
               color={data.tenant.mainColor}
               placeholder="Digite um Complemento"
               value={address.complement ?? ''}
-              onChange={value => setAddressComplement(value)}
+              onChange={value => changeAddressField('complement', value)}
               warning={errorFields.includes('complement')}
             />
           </div>
@@ -177,8 +186,8 @@ const EditAddress = (data: Props) => {
       <div className={styles.btnArea}>
         <Button
           color={data.tenant.mainColor}
-          label="Adicionar Endereço"
-          onClick={handleNewAddress}
+          label="Actualizar Endereço"
+          onClick={handleSaveAddress}
           fill
         />
       </div>
