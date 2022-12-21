@@ -26,7 +26,6 @@ const NewAddress = (data: Props) => {
 		if (data.user) setUser(data.user);
 	}, []);
 
-	const formater = useFormater();
 	const router = useRouter();
 	const api = useApi(data.tenant.slug);
 

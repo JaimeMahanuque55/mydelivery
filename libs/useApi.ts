@@ -98,6 +98,21 @@ export const useApi = (tenantSlug: string) => ({
     return addresses;
   },
 
+  getUserAddress: async (addressid: number) => {
+    let address: Address = {
+      id: addressid,
+      street: 'Rua das flores',
+      number: `${addressid}00`,
+      cep: '999999999',
+      city: 'Matola',
+      neighborhood: 'Liberdade',
+      state: 'MPT'
+
+    }
+
+    return address;
+  },
+
   addUserAddress: async (address: Address) => {
     console.log(address)
     return { ...address, id: 2 }
