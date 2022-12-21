@@ -32,6 +32,7 @@ const Checkout = (data: Props) => {
 
   const formater = useFormater();
   const router = useRouter();
+  const api = useApi(data.tenant.slug);
 
   // Product Control
   const [cart, setCart] = useState<CartItem[]>(data.cart);
@@ -68,8 +69,21 @@ const Checkout = (data: Props) => {
     setSubtotal(sub);
   }, [cart]);
 
-  const handleFinish = () => {
-
+  const handleFinish = async () => {
+    if (shippingAddress) {
+      const order = await api.setOrder(
+        shippingAddress,
+        paymentType,
+        paymentChange,
+        cupom,
+        data.cart
+      );
+      if (order) {
+        router.push(`/${data.tenant.slug}/order/${order.id}`);
+      } else {
+        alert('Ocorreu um erro! Tente novamente!');
+      }
+    }
   }
 
   return (

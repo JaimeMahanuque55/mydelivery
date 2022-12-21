@@ -1,5 +1,6 @@
 import { Address } from "../types/Address";
 import { CartItem } from "../types/CartItem";
+import { Order } from "../types/Order";
 import { Product } from "../types/Product";
 import { Tenant } from "../types/Tenant";
 import { User } from "../types/User";
@@ -13,7 +14,11 @@ const TemporaryOneProduct: Product = {
   description: '2 Blends de carne de 150g, Queijo Cheddar,Bacon Caramelizado, Salada, Molho da casa,Pão brioche artesanal'
 }
 
-export const useApi = (tenantSlug: string) => ({
+const TEMPORARYorder: Order = {
+
+}
+
+export const useApi = (tenantSlug?: string) => ({
 
   getTenant: async () => {
     switch (tenantSlug) {
@@ -130,6 +135,16 @@ export const useApi = (tenantSlug: string) => ({
 
   getShippingPrice: async (address: Address) => {
     return 9.16;
+  },
+  setOrder: async (
+    address: Address,
+    paymentType: 'money' | 'card',
+    paymentChange: number,
+    cupom: string,
+    cart: CartItem[]
+  ) => {
+
+    return TEMPORARYorder;
   }
 
 });
