@@ -15,7 +15,30 @@ const TemporaryOneProduct: Product = {
 }
 
 const TEMPORARYorder: Order = {
-
+  id: 123,
+  status: 'preparing',
+  orderDate: '2022-12-21',
+  userid: '123',
+  shippingAddress: {
+    id: 2,
+    street: 'Lagoa Azul',
+    number: '200',
+    cep: '11223344',
+    city: 'Maputo',
+    neighborhood: 'Alto-Mae',
+    state: 'MPT'
+  },
+  shippingPrice: 50,
+  paymentType: 'card',
+  cupom: 'SALV',
+  cupomDiscount: 50,
+  products: [
+    { product: { ...TemporaryOneProduct, id: 1 }, qt: 1 },
+    { product: { ...TemporaryOneProduct, id: 2 }, qt: 1 },
+    { product: { ...TemporaryOneProduct, id: 3 }, qt: 1 },
+  ],
+  subtotal: 200,
+  total: 200
 }
 
 export const useApi = (tenantSlug?: string) => ({
