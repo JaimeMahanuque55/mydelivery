@@ -20,6 +20,7 @@ export const useFormater = () => ({
   },
   formatDate: (date: string) => {
 
-    return '-----';
+    let currentDate = new Date(`${date} 00:00:00`);
+    return new Intl.DateTimeFormat('pt-PT').format(currentDate);
   }
-})
+});
