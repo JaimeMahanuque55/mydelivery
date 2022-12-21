@@ -4,7 +4,7 @@ import { useAppContext } from '../../../contexts/app';
 import { useApi } from '../../../libs/useApi';
 import styles from '../../../styles/NewAddress.module.css';
 import { Tenant } from '../../../types/Tenant';
-import { getCookie, setCookie } from 'cookies-next'
+import { getCookie } from 'cookies-next'
 import { User } from '../../../types/User';
 import { useAuthContext } from '../../../contexts/auth';
 import Head from 'next/head';

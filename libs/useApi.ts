@@ -123,6 +123,11 @@ export const useApi = (tenantSlug: string) => ({
     return true;
   },
 
+  deleteUserAddress: async (addressId: number) => {
+
+    return true;
+  },
+
   getShippingPrice: async (address: Address) => {
     return 9.16;
   }

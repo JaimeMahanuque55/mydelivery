@@ -44,11 +44,12 @@ const MyAddresses = (data: Props) => {
 
   const handleAddressEdit = (id: number) => {
     router.push(`/${data.tenant.slug}/address/${id}`)
-    console.log(`Editando o ${id}`)
   }
 
-  const handleAddressDelete = (id: number) => {
-    console.log(`Deletando o ${id}`)
+  const handleAddressDelete = async (id: number) => {
+
+    await api.deleteUserAddress(id);
+    router.reload();
   }
 
   const handleNewAddress = () => {
